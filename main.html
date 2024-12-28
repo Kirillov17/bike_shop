@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выезжающее вертикальное меню с подпунктами</title>
+    <style>
+        body
+        {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: margin-left 0.5s;
+            background: url(MainBackGround.jpg); 
+        }
+
+        .sidebar
+        {
+            height: 100%;
+            width: 250px;
+            background-color: #333;
+            position: fixed;
+            left: -250px; /* скрыто */
+            transition: left 0.5s;
+            overflow: auto;
+        }
+
+        .sidebar a
+        {
+            display: block;
+            color: white;
+            padding: 16px;
+            text-decoration: none;
+        }
+
+        .sidebar a:hover
+        {
+            background-color: #575757;
+        }
+
+        .submenu
+        {
+            display: none;
+            background-color: #444;
+            padding-left: 20px; /* Отступ для подпунктов */
+        }
+
+        .submenu a
+        {
+            padding: 10px 16px;
+        }
+
+        .search-container
+        {
+            margin: 0 auto;
+            width: 320px;
+            padding: 10px;
+            background-color: #444;
+            border-radius: 10px;
+        }
+
+        .search-input
+        {
+            width: 300px;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .open-btn
+        {
+            cursor: pointer;
+            font-size: 20px;
+            background-color: #333;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            position: absolute;
+            z-index: 1;
+        }
+
+        .open-btn:hover
+        {
+            background-color: #575757;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="open-btn" onclick="toggleMenu()">☰ Меню</button>
+    <div class="sidebar" id="mySidebar">
+        <a href="#home">Главная</a>
+        <a href="#about" onclick="toggleSubmenu(event)">Каталог</a>
+        <div class="submenu" id="aboutSubmenu">
+            <a href="#team">Горные велосипеды</a>
+            <a href="#history">Шоссейные велосипеды</a>
+            <a href="#history">городские велосипеды</a>
+            <a href="#history">Детские велосипеды</a>
+        </div>
+        <a href="#services">Сервис</a>
+        <a href="#contact">Контакты</a>
+    </div>
+    <div>
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Поиск...">
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu()
+        {
+            var sidebar = document.getElementById("mySidebar");
+            if (sidebar.style.left === "0px")
+            {
+                sidebar.style.left = "-250px"; // скрыто
+                document.body.style.marginLeft = "0";
+            }
+            else
+            {
+                sidebar.style.left = "0px"; // показано
+                document.body.style.marginLeft = "250px";
+            }
+        }
+
+        function toggleSubmenu(event)
+        {
+            event.preventDefault(); // предотвращаем переход по ссылке
+            var submenu = document.getElementById("aboutSubmenu");
+            if (submenu.style.display === "block")
+            {
+                submenu.style.display = "none"; // скрыть подпункты
+            }
+            else
+            {
+                submenu.style.display = "block"; // показать подпункты
+            }
+        }
+    </script>
+
+</body>
+</html>
