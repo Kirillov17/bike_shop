@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Вход / Регистрация</title>
+</head>
+<body>
+    <button class="open-btn" onclick="toggleMenu()">☰ Меню</button>
+    <div class="sidebar" id="mySidebar">
+        <a href="main.html"  id="nextPage">Главная</a>
+        <a href="account.html">Личный кабинет</a>
+        <a href="#about" onclick="toggleSubmenu(event)">Каталог</a>
+        <div class="submenu" id="aboutSubmenu">
+            <a href="#team">Горные велосипеды</a>
+            <a href="#history">Шоссейные велосипеды</a>
+            <a href="#history">городские велосипеды</a>
+            <a href="#history">Детские велосипеды</a>
+        </div>
+        <a href="#services">Сервис</a>
+        <a href="#contact">Контакты</a>
+    </div>
+
+    
+    
+    <div class="form-container" id="loginForm">
+        <h2>Вход</h2>
+        <div class="form-group">
+            <label for="loginEmail">Email:</label>
+            <input type="email" id="loginEmail" required>
+        </div>
+        <div class="form-group">
+            <label for="loginPassword">Пароль:</label>
+            <input type="password" id="loginPassword" required>
+        </div>
+        <button class="button" onclick="login()">Войти</button>
+        <span class="toggle-link" onclick="toggleForms()">Нет учетной записи? Зарегистрируйтесь</span>
+    </div>
+
+    <div class="form-container hidden" id="registerForm">
+        <h2>Регистрация</h2>
+        <div class="form-group">
+            <label for="registerEmail">Имя:</label>
+            <input type="name" id="registerName" required>
+        </div>
+        <div class="form-group">
+            <label for="registerEmail">Email:</label>
+            <input type="email" id="registerEmail" required>
+        </div>
+        <div class="form-group">
+            <label for="registerPassword">Пароль:</label>
+            <input type="password" id="registerPassword" required>
+        </div>
+        <div class="form-group">
+            <label for="registerPassword">Повторите пароль:</label>
+            <input type="password" id="registerPassword" required>
+        </div>
+        <button class="button" onclick="register()">Зарегистрироваться</button>
+        <span class="toggle-link" onclick="toggleForms()">Уже есть учетная запись? Войдите</span>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
